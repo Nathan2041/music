@@ -1,0 +1,10 @@
+'[#' split the current note into 2 notes and select the leftmost one, and the leftmost note will have a length of n and the rightmost
+	note will have a length of current_note - n
+']#' does the same thing as '[#' but selects the rightmost note
+'p#' sets the current selected note to n
+'d' deletes the current selected note
+'enter' toggles mode (rythms / notes)
+'i' creates a new measure
+
+
+for example, if ther user presses the key 'p' and then after unpressing 'p', the next character will be the #

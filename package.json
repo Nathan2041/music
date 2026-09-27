@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "name": "music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fallback": "vite build --sourcemap && vite preview --host"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "@types/vexflow": "^3.0.1",
+    "ts-pattern": "^5.8.0",
+    "typescript": "^5.9.2",
+    "vexflow": "^5.0.0",
+    "vite": "^7.1.4"
+  }
+}
