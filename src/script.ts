@@ -264,7 +264,11 @@ function toPercussion(pitchedNotes: Note[]): StaveNote[]
 function toTreble(pitchedNotes: Note[]): StaveNote[]
 {
 	return pitchedNotes.map((note) => {
-		let staveNote = new StaveNote({ keys: [note.note], duration: note.duration + (note.rest ? 'r' : ''), stemDirection: +(note.note[2]) >= 5 ? Stem.DOWN : Stem.UP })
+		let staveNote = new StaveNote({ keys: [note.note], duration: note.duration + (note.rest ? 'r' : ''), stemDirection: +(note.note[2]) >= 5 ? Stem.DOWN : Stem.UP });
+		if (+note.note[2] == NaN)
+		{
+			note.note = `${note.note[0]}${note.note[1]}4`;
+		}
 		if (note.accidental)
 		{
 			staveNote.addModifier(new Accidental(note.accidental), 0);
