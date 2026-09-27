@@ -265,10 +265,6 @@ function toTreble(pitchedNotes: Note[]): StaveNote[]
 {
 	return pitchedNotes.map((note) => {
 		let staveNote = new StaveNote({ keys: [note.note], duration: note.duration + (note.rest ? 'r' : ''), stemDirection: +(note.note[2]) >= 5 ? Stem.DOWN : Stem.UP });
-		if (+note.note[2] == NaN)
-		{
-			note.note = `${note.note[0]}${note.note[1]}4`;
-		}
 		if (note.accidental)
 		{
 			staveNote.addModifier(new Accidental(note.accidental), 0);
@@ -303,8 +299,17 @@ function loadFromLocalStorage(): Note[] | null
 		
 		let parsed = JSON.parse(raw);
 		if (!Array.isArray(parsed) || parsed.length == 0) return null;
+	
+		let notes = parsed as Note[];
+		for (let note of notes)
+		{
+			if (isNaN(+note.note[2]))
+			{
+				note.note = `${note.note[0]}${note.note[1]}4`;
+			}
+		}
 		
-		return parsed as Note[];
+		return notes;
 	}
 	catch
 	{
